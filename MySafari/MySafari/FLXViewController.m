@@ -50,9 +50,9 @@
 {
     [textField resignFirstResponder];
     
-    NSLog(@"URL: %@", textField.text);
+    NSLog(@"URL: %@", [textField.text stringByReplacingOccurrencesOfString:@"http://" withString:@""]);
 
-    NSString *urlString = textField.text;
+    NSString *urlString = [NSString stringWithFormat:@"http://%@",[textField.text stringByReplacingOccurrencesOfString:@"http://" withString:@""]];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
